@@ -1,0 +1,15 @@
+name: Build Resource Pack
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Zip Folder Contents
+        run: zip -r pack.zip assets/ pack.mcmeta pack.png
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Working-Resource-Pack
+          path: pack.zip
